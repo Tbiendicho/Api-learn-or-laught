@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+	{% if page == 'create' %}
+		<h4 class="text-center text-warning mt-3 mb-3">Création d'un nouvel utilisateur</h4>
+	{% else %}
+		<h4 class="text-center text-warning mt-3 mb-3">Modification d'un utilisateur</h4>
+	{% endif %}
+
+{% endblock title %}
+
+{% block backoffice_menu %}
+	{% include "backoffice/user/_menu.html.twig" %}
+{% endblock %}
+
+{% block body %}
+
+	<div class="login-form">
+
+		<div class="login-block bg-dark container border border-dark mt-5">
+
+			{{ include('_partials/_flash_messages.html.twig') }}
+			<h4 class="mt-3 mb-3 text-center text-warning">
+				{% if page == 'create' %}
+					Création d'un nouvel utilisateur
+				{% else %}
+					Modification de l'utilisateur
+				{% endif %}
+			</h4>
+		</div>
+
+		<div class="container mx-auto border border-dark login-form pt-3">
+
+			{{ form_start(user_form) }}
+
+			{{ form_errors(user_form) }}
+			{{ form_row(user_form.email) }}
+			{{ form_row(user_form.password) }}
+			{{ form_row(user_form.roles) }}
+
+			<div class="text-center">
+				<button type="submit" class="btn bg-black text-warning mt-3 mb-4" style="border-radius: 0.5em; font-size: 1em">
+					{% if 'user_add' == app.request.get('_route') %}
+						Créer
+					{% else %}
+						Modifier
+					{% endif %}
+				</button>
+			</div>
+
+			{{ form_end(user_form) }}
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

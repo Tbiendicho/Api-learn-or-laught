@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+	{% if error %}
+		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	{% endif %}
+
+	<div class="login-form">
+
+		<div class="login-block bg-dark container border border-dark mt-5">
+			<h4 class="text-center text-warning mt-3 mb-3">Backoffice - Connexion</h4>
+		</div>
+
+		<div class="container border border-dark">
+
+			<form action="{{ path('login') }}" method="post">
+				<div class="mb-3 mt-3">
+					<label for="username" class="form-label">Email</label>
+					<input type="text" class="form-control" id="username" placeholder="Saisir un email" name="_username" value="{{ last_username }}"/>
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label">Mot de passe</label>
+					<input type="password" class="form-control" id="password" placeholder="Saisir un mot de passe" name="_password"/>
+				</div>
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+				<div class="mt-4">
+					<a class="text-center" href="">
+						<p>Mot de passe oublié ?</p>
+					</a>
+				</div>
+
+				<div class="text-center">
+					<button type="submit" class="btn mt-3 mb-3 text-warning bg-dark" style="border-radius: 0.5em; font-size: 1em">Se connecter</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
