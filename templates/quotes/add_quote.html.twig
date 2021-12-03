@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une anecdote{% endblock %}
+
+{% block body %}
+
+    {{ form_start(quote_form) }}
+
+{{ form_row(quote_form.title) }}
+{{ form_row(quote_form.text) }}
+{{ form_row(quote_form.source) }}
+{{ form_row(quote_form.category) }}
+
+<button type="submit">Ajouter</button>
+
+    {{ form_end(quote_form) }}
+
+
+{% endblock %}
