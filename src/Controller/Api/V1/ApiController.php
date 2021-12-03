@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api", name="api")
+ * @Route("/api/v1/quote", name="api_v1", methods={"GET"})
  */
 class ApiController extends AbstractController
 {
     /**
-     * @Route("", name="api")
+     * @Route("", name="_quote")
      */
     public function browseQuotes(QuoteRepository $quoteRepository): Response
     {
@@ -23,7 +23,7 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="api_quote", methods={"GET"})
+     * @Route("/{id}", name="_category", methods={"GET"})
      */
     public function browseQuotesByCategory(QuoteRepository $quoteRepository, $id): Response
     {
@@ -32,7 +32,7 @@ class ApiController extends AbstractController
         return $this->json($allQuotesByCategory, Response::HTTP_OK, [], ['groups' => 'api_quote_browse']);
     }
 
-        // /**
+    // /**
     //  * @Route("/api/v1/quote/{id}", name="api_quote", methods={"GET"})
     //  */
     // public function browseQuotesBylike(QuoteRepository $quoteRepository, $id): Response

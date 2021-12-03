@@ -1,3 +1,10 @@
+api_login_check:
+    path: /api/login_check
+
+app_logout:
+    path: /logout
+    methods: GET
+
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
