@@ -32,11 +32,13 @@ class Quote
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"api_quote_browse"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"api_quote_browse"})
      */
     private $source;
 
